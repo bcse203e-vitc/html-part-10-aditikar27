@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Order</title>
+</head>
+<body>
+    <h2>Order Your Pizza</h2>
+    <p>Select Size:</p>
+    <input type="radio" name="size" value="Small"> Small
+    <input type="radio" name="size" value="Medium"> Medium
+    <input type="radio" name="size" value="Large"> Large
+
+    <p>Select Toppings:</p>
+    <input type="checkbox" value="Cheese"> Cheese
+    <input type="checkbox" value="Pepperoni"> Pepperoni
+    <input type="checkbox" value="Mushrooms"> Mushrooms
+    <input type="checkbox" value="Olives"> Olives
+
+    <button onclick="submitOrder()">Submit Order</button>
+    <p id="summary"></p>
+
+    <script>
+        function submitOrder() {
+            let size = document.querySelector('input[name="size"]:checked');
+            let toppings = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                                .map(topping => topping.value).join(', ');
+
+            if (size) {
+                document.getElementById("summary").textContent = `You ordered a ${size.value} pizza with ${toppings || "no toppings"}.`;
+            } else {
+                alert("Please select a pizza size.");
+            }
+        }
+    </script>
+</body>
+</html>

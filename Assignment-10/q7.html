@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word & Character Counter</title>
+</head>
+<body>
+    <textarea id="textarea" oninput="countText()"></textarea>
+    <p>Words: <span id="wordCount">0</span> | Characters: <span id="charCount">0</span></p>
+
+    <script>
+        function countText() {
+            let text = document.getElementById("textarea").value;
+            let words = text.trim().split(/\s+/).filter(word => word !== "").length;
+            let chars = text.length;
+            document.getElementById("wordCount").textContent = words;
+            document.getElementById("charCount").textContent = chars;
+        }
+    </script>
+</body>
+</html>
